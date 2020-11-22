@@ -1,0 +1,45 @@
+{
+  "name": "terminbingo",
+  "version": "0.0.0",
+  "description": "Terminbingo",
+  "main": "no",
+  "scripts": {
+    "start": "parcel serve ./src/index.html",
+    "build": "parcel build ./src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "placeholder"
+  },
+  "author": "Eirik Fossestøl Andresen <eiriand03@gmail.com>",
+  "license": "ISC",
+  "alias": {
+    "react": "preact/compat",
+    "react-dom/test-utils": "preact/test-utils",
+    "react-dom": "preact/compat"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
+    "bulma": "^0.9.1",
+    "preact": "^10.5.7",
+    "wouter": "^2.5.3"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.12.7",
+    "@babel/preset-typescript": "^7.12.7",
+    "@parcel/validator-typescript": "^2.0.0-alpha.3",
+    "@typescript-eslint/eslint-plugin": "^4.8.1",
+    "@typescript-eslint/parser": "^4.8.1",
+    "eslint": "^7.14.0",
+    "eslint-config-airbnb-typescript": "^12.0.0",
+    "eslint-import-resolver-typescript": "^2.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "parcel": "^2.0.0-nightly.457",
+    "sass": "^1.29.0",
+    "typescript": "^4.1.2"
+  }
+}

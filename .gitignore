@@ -1,0 +1,9 @@
+# Packages/dependencies
+node_modules/
+
+# Build
+dist/
+.parcel-cache/
+
+# Development
+.vscode/
