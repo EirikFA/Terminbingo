@@ -30,7 +30,7 @@ const TeacherCard: FunctionComponent<TeacherCardProps> = ({
         <i>{tagline}</i>
       </p>
       <p className="tags">
-        {subjects.map(s => <span className="tag is-dark">{s}</span>)}
+        {Object.keys(subjects).map(s => <span className="tag is-dark">{s}</span>)}
       </p>
     </div>
   </div>
