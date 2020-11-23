@@ -90,6 +90,8 @@ const HomePage: FunctionComponent<HomePageProps> = ({ params: { schoolId } }) =>
   // Yes, `HomePageParams.schoolId` is not optional, but it will be `undefined` when there is no parameter
   // Wouter's `DefaultParams` (`RouteComponentProps`) does not permit any other value types than strings (do not ask why)
   if (schoolId?.trim() !== "") findAndSetSchool(schoolId);
+  // For history to work/re-render picker
+  if (!schoolId || schoolId.trim() === "") setSchool(null);
 
   const handleSchoolInput: JSX.GenericEventHandler<HTMLSelectElement> = e => {
     const selected = findAndSetSchool((e.target as HTMLSelectElement).value);

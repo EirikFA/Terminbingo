@@ -22,6 +22,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",
     "bulma": "^0.9.1",
+    "bulma-prefers-dark": "0.1.0-beta.0",
     "preact": "^10.5.7",
     "wouter-preact": "^2.5.3"
   },
