@@ -8,7 +8,7 @@ import "./Home.scss";
 import { SchoolPicker, TeacherList } from "../components";
 import { School, Subject, Teacher } from "../types";
 
-const teachers: Teacher[] = [
+export const teachers: Teacher[] = [
   {
     id: "1",
     name: "John-Nitter Gundersen",
@@ -59,7 +59,7 @@ const teachers: Teacher[] = [
   }
 ];
 
-const schools: School[] = [
+export const schools: School[] = [
   {
     id: "1",
     name: "Arendal videregående skole",
