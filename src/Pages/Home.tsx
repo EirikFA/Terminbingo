@@ -1,6 +1,6 @@
 import { FunctionComponent, h, JSX } from "preact";
 import { useState } from "preact/hooks";
-import { useLocation } from "wouter-preact";
+import { RouteComponentProps, useLocation } from "wouter-preact";
 import "@fortawesome/fontawesome-free/css/all.css";
 
 import "./Home.scss";
@@ -67,18 +67,33 @@ const schools: School[] = [
   }
 ];
 
-export interface HomePageProps extends Route
+// Does not work with interface - https://github.com/microsoft/TypeScript/issues/15300
+type HomePageParams = {
+  schoolId: string;
+};
 
-const HomePage: FunctionComponent = () => {
+export type HomePageProps = RouteComponentProps<HomePageParams>;
+
+const HomePage: FunctionComponent<HomePageProps> = ({ params: { schoolId } }) => {
   const [, setLocation] = useLocation();
   const [school, setSchool] = useState<School | null>(null);
 
-  const handleSchoolInput: JSX.GenericEventHandler<HTMLSelectElement> = e => {
-    const selected = schools.find(s => s.id === (e.target as HTMLSelectElement).value);
+  const findAndSetSchool = (id: string): School | undefined => {
+    const selected = schools.find(s => s.id === id);
     if (selected) {
       setSchool(selected);
-      setLocation(`/${selected.id}`);
     }
+
+    return selected;
+  };
+
+  // Yes, `HomePageParams.schoolId` is not optional, but it will be `undefined` when there is no parameter
+  // Wouter's `DefaultParams` (`RouteComponentProps`) does not permit any other value types than strings (do not ask why)
+  if (schoolId?.trim() !== "") findAndSetSchool(schoolId);
+
+  const handleSchoolInput: JSX.GenericEventHandler<HTMLSelectElement> = e => {
+    const selected = findAndSetSchool((e.target as HTMLSelectElement).value);
+    if (selected) setLocation(`/${selected.id}`);
   };
 
   const handleTeacherClick = (id: string): void => {
