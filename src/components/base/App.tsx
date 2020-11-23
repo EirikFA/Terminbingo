@@ -1,12 +1,13 @@
 import { FunctionComponent, h } from "preact";
 import { Route, Switch } from "wouter";
 
-import { Home } from "../../Pages";
+import { GamePage, HomePage } from "../../Pages";
 
 const App: FunctionComponent = () => (
   <section className="section">
     <Switch>
-      <Route path="/" component={Home} />
+      <Route path="/" component={HomePage} />
+      <Route path="/game/:schoolId/:teacherId" component={GamePage} />
     </Switch>
   </section>
 );

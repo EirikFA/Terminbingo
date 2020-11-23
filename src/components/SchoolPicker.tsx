@@ -23,7 +23,7 @@ const SchoolPicker: FunctionComponent<SchoolPickerProps> = ({ onContinue, onInpu
     </div>
 
     <div className="control">
-      <button type="submit" className="button is-link" onClick={onContinue}>
+      <button type="button" className="button is-dark" onClick={onContinue}>
         <i className="fas fa-arrow-right" />
       </button>
     </div>

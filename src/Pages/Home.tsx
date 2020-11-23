@@ -1,6 +1,9 @@
 import { FunctionComponent, h, JSX } from "preact";
 import { useState } from "preact/hooks";
+import { useLocation } from "wouter";
 import "@fortawesome/fontawesome-free/css/all.css";
+
+import "./Home.scss";
 
 import { SchoolPicker, TeacherList } from "../components";
 import { School, Subject, Teacher } from "../types";
@@ -52,12 +55,19 @@ const schools: School[] = [
   }
 ];
 
-const Home: FunctionComponent = () => {
+const HomePage: FunctionComponent = () => {
+  const [, setLocation] = useLocation();
   const [school, setSchool] = useState<School | null>(null);
 
   const handleSchoolInput: JSX.GenericEventHandler<HTMLSelectElement> = e => {
     const selected = schools.find(s => s.id === (e.target as HTMLSelectElement).value);
     setSchool(selected ?? null);
+  };
+
+  const handleTeacherClick = (id: string): void => {
+    if (school) {
+      setLocation(`/game/${school.id}/${id}`);
+    }
   };
 
   return (
@@ -71,12 +81,12 @@ const Home: FunctionComponent = () => {
       {!school && <SchoolPicker onInput={handleSchoolInput} schools={schools} />}
 
       {school && (
-        <div className="columns">
-          <TeacherList teachers={school.teachers} />
+        <div className="columns teacher-list">
+          <TeacherList teachers={school.teachers} onClick={handleTeacherClick} />
         </div>
       )}
     </div>
   );
 };
 
-export default Home;
+export default HomePage;

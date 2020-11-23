@@ -1,0 +1,23 @@
+.teacher-list .teacher-card {
+  cursor: pointer;
+  position: relative;
+  min-height: 200px;
+
+  .select-teacher-button {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover {
+    .media {
+      opacity: 0.3;
+    }
+
+    .select-teacher-button {
+      opacity: 1;
+    }
+  }
+}

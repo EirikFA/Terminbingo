@@ -4,14 +4,15 @@ import { Teacher } from "../types";
 import TeacherCard from "./TeacherCard";
 
 export interface TeacherListProps {
-  teachers: Teacher[]
+  onClick?: (id: string) => void;
+  teachers: Teacher[];
 }
 
-const TeacherList: FunctionComponent<TeacherListProps> = ({ teachers }) => (
+const TeacherList: FunctionComponent<TeacherListProps> = ({ onClick, teachers }) => (
   <Fragment>
     {teachers.map(t => (
       <div className="column is-4">
-        <TeacherCard key={t.id} teacher={t} />
+        <TeacherCard key={t.id} teacher={t} onClick={() => onClick && onClick(t.id)} />
       </div>
     ))}
   </Fragment>
