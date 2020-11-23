@@ -11,7 +11,7 @@ export interface TeacherListProps {
 const TeacherList: FunctionComponent<TeacherListProps> = ({ onClick, teachers }) => (
   <Fragment>
     {teachers.map(t => (
-      <div className="column is-4">
+      <div className="column is-6 is-4-desktop is-flex is-flex-direction-column">
         <TeacherCard key={t.id} teacher={t} onClick={() => onClick && onClick(t.id)} />
       </div>
     ))}

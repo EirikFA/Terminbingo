@@ -44,6 +44,18 @@ const teachers: Teacher[] = [
       [Subject.Hist.toString()]: [],
       [Subject.Norw.toString()]: []
     }
+  },
+  {
+    id: "4",
+    name: "Olav Mørland",
+    tagline: "Selvstudium i IT-timene i dag",
+    picture: "https://s3.itslearning.com/fetch?id=7602%2F09e6-4860-4cc5-bb7b-4d6e709001c4&version=1&expires=2020-11-23T16%3A06%3A28Z&isDownloadRequest=0&s3Url=https%3A%2F%2Fs3.eu-central-1.amazonaws.com%2Fprod.eu-central-1.filerepo%2F7602%2F09e6-4860-4cc5-bb7b-4d6e709001c4%3FX-Amz-Expires%3D900%26response-cache-control%3Dmax-age%253D900%26response-content-disposition%3Dinline%253B%2520filename%253D%2522900742_414128_637014640353753126.png%2522%253B%26response-content-type%3Dimage%252Fpng%26X-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAIQ6TLTXZ2ESTRSDA%2F20201123%2Feu-central-1%2Fs3%2Faws4_request%26X-Amz-Date%3D20201123T155128Z%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Signature%3D0fd6a08ddd73f7c880e35c9ea5363f4caaf0f41e2712dd44bb118a8a3da73e21&sign=jgSyLfXgOQK8eYFoYEnFTpAYq%2BaeRjMEbbFvrZj8T%2BU%3D",
+    phrases: ["Selvstudium i IT-timene i dag"],
+    subjects: {
+      [Subject.IT1.toString()]: [],
+      [Subject.IT2.toString()]: [],
+      [Subject.Math1T.toString()]: []
+    }
   }
 ];
 
@@ -81,7 +93,7 @@ const HomePage: FunctionComponent = () => {
       {!school && <SchoolPicker onInput={handleSchoolInput} schools={schools} />}
 
       {school && (
-        <div className="columns teacher-list">
+        <div className="columns is-multiline teacher-list">
           <TeacherList teachers={school.teachers} onClick={handleTeacherClick} />
         </div>
       )}

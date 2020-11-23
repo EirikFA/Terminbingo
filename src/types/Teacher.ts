@@ -7,6 +7,10 @@ export class Subject {
 
   public static Hist: Subject = new Subject("Historie");
 
+  public static IT1: Subject = new Subject("Informasjonsteknologi 1");
+
+  public static IT2: Subject = new Subject("Informasjonsteknologi 2");
+
   public static Math1T: Subject = new Subject("Matematikk 1T");
 
   public static MathR1: Subject = new Subject("Matematikk R1");

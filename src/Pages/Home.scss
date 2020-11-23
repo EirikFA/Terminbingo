@@ -1,7 +1,16 @@
 .teacher-list .teacher-card {
   cursor: pointer;
   position: relative;
-  min-height: 200px;
+  height: 100%;
+
+  .media {
+    transition: 0.3s ease;
+  }
+
+  .media-content {
+    // To prevent scrolling on small screens (Bulma sets to auto)
+    overflow-x: unset;
+  }
 
   .select-teacher-button {
     opacity: 0;
@@ -9,6 +18,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition: 0.3s ease;
   }
 
   &:hover {
