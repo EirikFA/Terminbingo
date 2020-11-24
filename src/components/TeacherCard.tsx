@@ -12,7 +12,7 @@ export interface TeacherCardProps {
 const TeacherCard: FunctionComponent<TeacherCardProps> = ({
   onClick,
   teacher: {
-    name, tagline, picture, subjects
+    name, tagline, picture, phrases
   }
 }) => (
   <div className="box teacher-card">
@@ -33,7 +33,7 @@ const TeacherCard: FunctionComponent<TeacherCardProps> = ({
           <i>{tagline}</i>
         </p>
         <p className="tags">
-          {Object.keys(subjects).map(s => <span className="tag is-dark">{s}</span>)}
+          {Object.keys(phrases).map(subject => subject !== "general" && <span className="tag is-dark">{subject}</span>)}
         </p>
       </div>
     </div>

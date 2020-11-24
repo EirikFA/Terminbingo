@@ -11,15 +11,15 @@ import { School, Teacher } from "../types";
 export const teachers: Teacher[] = [
   {
     id: "1",
-    name: "John-Nitter Gundersen",
+    name: "John Nitter Gundersen",
     tagline: "Kræsj bom bang",
     picture: "https://via.placeholder.com/64x64.png",
-    phrases: ["Kræsj bom bang", "Sorry"],
-    subjects: {
-      Geog: ["Lorem", "Ipsum"],
-      Geo1: ["Jalla geo1"],
-      Geo2: ["Geo2"],
-      MathR2: ["MathR2", "mong"]
+    phrases: {
+      general: ["Kræsj bom bang", "Sorry"],
+      Geografi: ["Lorem", "Ipsum"],
+      "Geofag 1": ["Jalla geo1"],
+      "Geofag 2": ["Geo2"],
+      "Matematikk R2": ["MathR2", "mong"]
     }
   },
   {
@@ -27,22 +27,22 @@ export const teachers: Teacher[] = [
     name: "Olav Skutlaberg",
     tagline: "Glup idé",
     picture: "https://via.placeholder.com/64x64.png",
-    phrases: ["Glup idé"],
-    subjects: {
-      Math1T: [],
-      MathR1: [],
-      MathR2: []
+    phrases: {
+      general: ["Glup idé"],
+      "Matematikk 1T": [],
+      "Matematikk R1": [],
+      "Matematikk R2": []
     }
   },
   {
     id: "3",
-    name: "John-Willy Syvertsen",
+    name: "John Willy Syvertsen",
     tagline: "All krig er basert",
     picture: "https://cdn.discordapp.com/avatars/324619866487390218/08ce9ce5a3f9827d74ad4cdeed413ac7.png?size=64",
-    phrases: ["All krig er basert"],
-    subjects: {
-      Hist: [],
-      Norw: []
+    phrases: {
+      general: ["All krig er basert"],
+      Historie: [],
+      Norsk: []
     }
   },
   {
@@ -50,11 +50,11 @@ export const teachers: Teacher[] = [
     name: "Olav Mørland",
     tagline: "Selvstudium i IT-timene i dag",
     picture: "https://via.placeholder.com/64x64.png",
-    phrases: ["Selvstudium i IT-timene i dag"],
-    subjects: {
-      IT1: [],
-      IT2: [],
-      Math1T: []
+    phrases: {
+      general: ["Selvstudium i IT-timene i dag"],
+      "Informasjonsteknologi 1": [],
+      "Informasjonsteknologi 2": [],
+      "Matematikk 1T": []
     }
   }
 ];

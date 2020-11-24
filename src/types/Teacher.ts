@@ -1,40 +1,10 @@
-export class Subject {
-  public static Geo1: Subject = new Subject("Geofag 1");
-
-  public static Geo2: Subject = new Subject("Geofag 2");
-
-  public static Geog: Subject = new Subject("Geografi");
-
-  public static Hist: Subject = new Subject("Historie");
-
-  public static IT1: Subject = new Subject("Informasjonsteknologi 1");
-
-  public static IT2: Subject = new Subject("Informasjonsteknologi 2");
-
-  public static Math1T: Subject = new Subject("Matematikk 1T");
-
-  public static MathR1: Subject = new Subject("Matematikk R1");
-
-  public static MathR2: Subject = new Subject("Matematikk R2");
-
-  public static Norw: Subject = new Subject("Norsk");
-
-  private constructor (private readonly name: string) {}
-
-  public toString (): string {
-    return this.name;
-  }
-}
-
-export type SubjectCode = Exclude<keyof typeof Subject, "prototype">;
-
 export interface Teacher {
   id: string;
   name: string;
   tagline: string;
   picture: string;
-  phrases: string[];
-  subjects: {
-    [K in SubjectCode]?: string[];
+  phrases: {
+    // Key is subject name
+    [K: string]: string[];
   };
 }
