@@ -1,6 +1,6 @@
 import { FunctionComponent, h } from "preact";
 import { useState } from "preact/hooks";
-import { RouteComponentProps } from "wouter-preact";
+import { Link, RouteComponentProps } from "wouter-preact";
 
 import { Subject, SubjectCode } from "../types";
 import { schools } from "./Teachers";
@@ -26,6 +26,9 @@ const StartGamePage: FunctionComponent<StartGamePageProps> = ({ params: { school
   initialSubjects.general = true;
 
   const [subjects, setSubjects] = useState<typeof initialSubjects>(initialSubjects);
+  const activeSubjects = Object.entries(subjects)
+    .map(([code, checked]) => (checked ? code : undefined))
+    .filter(code => !!code);
 
   const handleClick = (subject: SubjectCode | "general") => {
     setSubjects(subs => ({
@@ -61,7 +64,7 @@ const StartGamePage: FunctionComponent<StartGamePageProps> = ({ params: { school
 
       <div className="field">
         <div className="control">
-          <button className="button is-link" type="button">Lag spillbrett</button>
+          <Link href={`/${schoolId}/${teacherId}/game?subjects=${JSON.stringify(activeSubjects)}`} className="button is-link">Lag spillbrett</Link>
         </div>
       </div>
     </div>
