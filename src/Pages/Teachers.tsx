@@ -3,7 +3,7 @@ import { useState } from "preact/hooks";
 import { RouteComponentProps, useLocation } from "wouter-preact";
 import "@fortawesome/fontawesome-free/css/all.css";
 
-import "./Home.scss";
+import "./Teachers.scss";
 
 import { SchoolPicker, TeacherList } from "../components";
 import { School, Teacher } from "../types";
