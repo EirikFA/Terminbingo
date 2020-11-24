@@ -3,7 +3,7 @@ export interface Teacher {
   name: string;
   tagline: string;
   picture: string;
-  phrases: {
+  quotes: {
     // Key is subject name
     [K: string]: string[];
   };

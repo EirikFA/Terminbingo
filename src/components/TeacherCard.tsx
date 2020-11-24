@@ -12,7 +12,7 @@ export interface TeacherCardProps {
 const TeacherCard: FunctionComponent<TeacherCardProps> = ({
   onClick,
   teacher: {
-    name, tagline, picture, phrases
+    name, tagline, picture, quotes: phrases
   }
 }) => (
   <div className="box teacher-card">

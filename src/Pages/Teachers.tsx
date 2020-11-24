@@ -14,11 +14,11 @@ export const teachers: Teacher[] = [
     name: "John Nitter Gundersen",
     tagline: "Kræsj bom bang",
     picture: "https://via.placeholder.com/64x64.png",
-    phrases: {
+    quotes: {
       general: ["Kræsj bom bang", "Sorry"],
       Geografi: ["Lorem", "Ipsum"],
-      "Geofag 1": ["Jalla geo1"],
-      "Geofag 2": ["Geo2"],
+      "Geofag 1": ["Jalla geo1", "Tektoniske plater"],
+      "Geofag 2": ["Sitaterrrr", "Dolor sit", "Lorem", "Ipsum"],
       "Matematikk R2": ["MathR2", "mong"]
     }
   },
@@ -27,7 +27,7 @@ export const teachers: Teacher[] = [
     name: "Olav Skutlaberg",
     tagline: "Glup idé",
     picture: "https://via.placeholder.com/64x64.png",
-    phrases: {
+    quotes: {
       general: ["Glup idé"],
       "Matematikk 1T": [],
       "Matematikk R1": [],
@@ -39,7 +39,7 @@ export const teachers: Teacher[] = [
     name: "John Willy Syvertsen",
     tagline: "All krig er basert",
     picture: "https://cdn.discordapp.com/avatars/324619866487390218/08ce9ce5a3f9827d74ad4cdeed413ac7.png?size=64",
-    phrases: {
+    quotes: {
       general: ["All krig er basert"],
       Historie: [],
       Norsk: []
@@ -50,7 +50,7 @@ export const teachers: Teacher[] = [
     name: "Olav Mørland",
     tagline: "Selvstudium i IT-timene i dag",
     picture: "https://via.placeholder.com/64x64.png",
-    phrases: {
+    quotes: {
       general: ["Selvstudium i IT-timene i dag"],
       "Informasjonsteknologi 1": [],
       "Informasjonsteknologi 2": [],

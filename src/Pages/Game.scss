@@ -1,0 +1,13 @@
+.bingo-row {
+  width: 30vw;
+  margin: 0 auto !important;
+
+  .bingo-square {
+    background-color: $black;
+    max-width: 10vw;
+    height: 10vw;
+    align-items: center;
+    justify-content: center;
+    color: $grey-lighter;
+  }
+}

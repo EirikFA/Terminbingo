@@ -1,5 +1,5 @@
 import { FunctionComponent, h } from "preact";
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { Link, RouteComponentProps } from "wouter-preact";
 
 import { schools } from "./Teachers";
@@ -18,13 +18,25 @@ const StartGamePage: FunctionComponent<StartGamePageProps> = ({ params: { school
   if (!teacher) return <div>Not found</div>;
 
   // Creates object with teacher's subject (codes) as keys (plus one for general quotes)
-  const initialSubjects: Partial<Record<string, boolean>> = Object.keys(teacher.phrases).reduce((obj, prop) => ({
+  const initialSubjects: Partial<Record<string, boolean>> = Object.keys(teacher.quotes).reduce((obj, prop) => ({
     ...obj,
     [prop]: false
   }), {});
   initialSubjects.general = true;
 
   const [subjects, setSubjects] = useState<typeof initialSubjects>(initialSubjects);
+  const [preventSubmit, setPreventSubmit] = useState(false);
+
+  useEffect(() => {
+    const prevent = !Object.values(subjects).includes(true);
+    // To prevent rerendering when the value did not change
+    // (P)react should bail out, but we like being safe
+    // https://reactjs.org/docs/hooks-reference.html#bailing-out-of-a-state-update
+    if (prevent !== preventSubmit) {
+      setPreventSubmit(prevent);
+    }
+  }, [subjects]);
+
   const activeSubjects = Object.entries(subjects)
     .map(([code, checked]) => (checked ? code : undefined))
     .filter(code => !!code);
@@ -47,7 +59,7 @@ const StartGamePage: FunctionComponent<StartGamePageProps> = ({ params: { school
         <i> (Sitater uten tilknytning til et bestemt fag)</i>
       </div>
 
-      {Object.keys(teacher.phrases).map(subject => {
+      {Object.keys(teacher.quotes).map(subject => {
         // Shown above with better description
         if (subject === "general") return null;
 
@@ -65,9 +77,17 @@ const StartGamePage: FunctionComponent<StartGamePageProps> = ({ params: { school
 
       <div className="field">
         <div className="control">
-          <Link href={`/${schoolId}/${teacherId}/game?subjects=${JSON.stringify(activeSubjects)}`} className="button is-link">Lag spillbrett</Link>
+          <Link href={`/${schoolId}/${teacherId}/game?subjects=${JSON.stringify(activeSubjects)}`}>
+            <button className="button is-link" type="button" disabled={preventSubmit}>Lag spillbrett</button>
+          </Link>
         </div>
       </div>
+
+      {preventSubmit && (
+        <div className="field">
+          <p className="help is-danger">Velg minst én gruppe med sitater</p>
+        </div>
+      )}
     </div>
   );
 };
