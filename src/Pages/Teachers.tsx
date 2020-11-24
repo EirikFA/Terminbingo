@@ -6,7 +6,7 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import "./Home.scss";
 
 import { SchoolPicker, TeacherList } from "../components";
-import { School, Subject, Teacher } from "../types";
+import { School, Teacher } from "../types";
 
 export const teachers: Teacher[] = [
   {
@@ -14,12 +14,12 @@ export const teachers: Teacher[] = [
     name: "John-Nitter Gundersen",
     tagline: "Kræsj bom bang",
     picture: "https://via.placeholder.com/64x64.png",
-    phrases: ["Kræsj bom bang"],
+    phrases: ["Kræsj bom bang", "Sorry"],
     subjects: {
-      [Subject.Geog.toString()]: [],
-      [Subject.Geo1.toString()]: [],
-      [Subject.Geo2.toString()]: [],
-      [Subject.MathR2.toString()]: []
+      Geog: ["Lorem", "Ipsum"],
+      Geo1: ["Jalla geo1"],
+      Geo2: ["Geo2"],
+      MathR2: ["MathR2", "mong"]
     }
   },
   {
@@ -29,9 +29,9 @@ export const teachers: Teacher[] = [
     picture: "https://via.placeholder.com/64x64.png",
     phrases: ["Glup idé"],
     subjects: {
-      [Subject.Math1T.toString()]: [],
-      [Subject.MathR1.toString()]: [],
-      [Subject.MathR2.toString()]: []
+      Math1T: [],
+      MathR1: [],
+      MathR2: []
     }
   },
   {
@@ -41,8 +41,8 @@ export const teachers: Teacher[] = [
     picture: "https://cdn.discordapp.com/avatars/324619866487390218/08ce9ce5a3f9827d74ad4cdeed413ac7.png?size=64",
     phrases: ["All krig er basert"],
     subjects: {
-      [Subject.Hist.toString()]: [],
-      [Subject.Norw.toString()]: []
+      Hist: [],
+      Norw: []
     }
   },
   {
@@ -52,9 +52,9 @@ export const teachers: Teacher[] = [
     picture: "https://via.placeholder.com/64x64.png",
     phrases: ["Selvstudium i IT-timene i dag"],
     subjects: {
-      [Subject.IT1.toString()]: [],
-      [Subject.IT2.toString()]: [],
-      [Subject.Math1T.toString()]: []
+      IT1: [],
+      IT2: [],
+      Math1T: []
     }
   }
 ];
@@ -68,13 +68,13 @@ export const schools: School[] = [
 ];
 
 // Does not work with interface - https://github.com/microsoft/TypeScript/issues/15300
-type HomePageParams = {
+type TeachersPageParams = {
   schoolId: string;
 };
 
-export type HomePageProps = RouteComponentProps<HomePageParams>;
+export type TeachersPageProps = RouteComponentProps<TeachersPageParams>;
 
-const HomePage: FunctionComponent<HomePageProps> = ({ params: { schoolId } }) => {
+const TeachersPage: FunctionComponent<TeachersPageProps> = ({ params: { schoolId } }) => {
   const [, setLocation] = useLocation();
   const [school, setSchool] = useState<School | null>(null);
 
@@ -87,10 +87,10 @@ const HomePage: FunctionComponent<HomePageProps> = ({ params: { schoolId } }) =>
     return selected;
   };
 
-  // Yes, `HomePageParams.schoolId` is not optional, but it will be `undefined` when there is no parameter
+  // Yes, `TeachersPageParams.schoolId` is not optional, but it will be `undefined` when there is no parameter
   // Wouter's `DefaultParams` (`RouteComponentProps`) does not permit any other value types than strings (do not ask why)
   if (schoolId?.trim() !== "") findAndSetSchool(schoolId);
-  // For history to work/re-render picker
+  // For history to work/re-render picker when user goes back to root (the route is the same)
   if (!schoolId || schoolId.trim() === "") setSchool(null);
 
   const handleSchoolInput: JSX.GenericEventHandler<HTMLSelectElement> = e => {
@@ -100,7 +100,7 @@ const HomePage: FunctionComponent<HomePageProps> = ({ params: { schoolId } }) =>
 
   const handleTeacherClick = (id: string): void => {
     if (school) {
-      setLocation(`/game/${school.id}/${id}`);
+      setLocation(`/${school.id}/${id}`);
     }
   };
 
@@ -123,4 +123,4 @@ const HomePage: FunctionComponent<HomePageProps> = ({ params: { schoolId } }) =>
   );
 };
 
-export default HomePage;
+export default TeachersPage;

@@ -19,12 +19,14 @@ export class Subject {
 
   public static Norw: Subject = new Subject("Norsk");
 
-  private constructor (public readonly name: string) {}
+  private constructor (private readonly name: string) {}
 
   public toString (): string {
     return this.name;
   }
 }
+
+export type SubjectCode = Exclude<keyof typeof Subject, "prototype">;
 
 export interface Teacher {
   id: string;
@@ -33,6 +35,6 @@ export interface Teacher {
   picture: string;
   phrases: string[];
   subjects: {
-    [K in Exclude<keyof typeof Subject, "prototype">]?: string[];
+    [K in SubjectCode]?: string[];
   };
 }
